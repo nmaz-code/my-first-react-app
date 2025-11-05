@@ -5,7 +5,7 @@ import Modal from './components/Modal'
 
 
 
-function App() {
+function App() { 
   const [showModal, setShowModal] = useState(true)
   const [showEvents, setShowEvents] = useState(true)
   const [events, setEvents] = useState([
