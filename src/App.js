@@ -6,6 +6,7 @@ import Modal from './components/Modal'
 
 
 function App() {
+  const [showModal, setShowModal] = useState(true)
   const [showEvents, setShowEvents] = useState(true)
   const [events, setEvents] = useState([
     {title: "mario's birthday bash", id: 1},
@@ -13,7 +14,7 @@ function App() {
     {title: "race on moo moo farm", id: 3}
     
   ])
-  console.log(showEvents)
+  console.log(showModal)
 
   const handleClick = (id) => {
      
@@ -22,9 +23,13 @@ function App() {
         return id !==event.id
       })
     })
-     console.log(id)
-
+     
+   
   }
+  const handleClose = () => {
+      setShowModal(false)
+    }
+
   const subtitle = "All the latest events in the Mario kingdom"
   return (
     <div className="App">
@@ -50,10 +55,16 @@ function App() {
           <button onClick={() => handleClick(event.id)}>Delete event</button>
         </React.Fragment>
       ))}
-      <Modal >
-        <h2>10% Off Coupon Code!!</h2>
-        <p>Use the code NINJA10 at the checkout.</p>
-      </Modal>
+      
+      {showModal && (
+        <Modal handleClose={handleClose}>
+          <h2>10% Off Coupon Code!!</h2>
+          <p>Use the code NINJA10 at the checkout.</p>
+        </Modal>
+      )}
+      <p>
+        <button onClick={() => setShowModal(true)}>Show Modal</button>
+      </p>
     </div>
   );
 }
